@@ -1,0 +1,20 @@
+server:
+  port: 8004
+
+spring:
+  application:
+    name: cloud-payment-service
+#  datasource:
+#    type: com.alibaba.druid.pool.DruidDataSource
+#    driverClassName: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://192.168.137.130:3306/cloud_learning?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
+#    username: root
+#    password: root
+  cloud:
+    zookeeper:
+      connect-string: 192.168.137.130:2181
+
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+  type-aliases-package: com.gy.springcloud.entities
+

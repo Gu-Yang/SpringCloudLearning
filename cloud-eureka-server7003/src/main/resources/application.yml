@@ -1,0 +1,15 @@
+server:
+  port: 7003
+
+spring:
+  application:
+    name: eureka7003.com
+
+eureka:
+  instance:
+    hostname: eureka7003.com
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    serviceUrl:
+      defaultZone: http://eureka7001:7001/eureka, http://eureka7002:7002/eureka

@@ -1,0 +1,16 @@
+server:
+  port: 7001
+
+spring:
+  application:
+    name: eureka7001.com2
+eureka:
+  instance:
+    hostname: eureka7001.com1
+  client:
+    register-with-eureka: false # false表示不向注册中心注册自己
+    fetch-registry: false  # false表示自己就是注册中心，不需要去检索服务
+    service-url:
+      defaultZone: http://eureka7002.com:7002/eureka #,http://eureka7003.com:7003/eureka #http://${eureka.instance.hostname}:${server.port}/eureka/ # 设置与Eureka server交互的地址
+  server:
+    enable-self-preservation: true  #是否打开自动保护模式
