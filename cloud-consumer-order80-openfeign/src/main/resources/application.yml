@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: cloud-consumer-order80
+    name: cloud-consumer-order80-openfeign
 
 eureka:
   client:
@@ -12,6 +12,14 @@ eureka:
     service-url:
       defaultZone: http://eureka7001.com:7001/eureka, http://eureka7002.com:7002/eureka
 
-CLOUD-PAYMENT-SERVICE:
-  ribbon:
-    NFLoadBalancerRuleClassName: com.gy.springcloud.rule.MyRibbonRule
+#CLOUD-PAYMENT-SERVICE:
+#  ribbon:
+#    NFLoadBalancerRuleClassName: com.gy.springcloud.rule.MyRibbonRule
+
+ribbon:
+  ReadTimeout: 5000   #指的是建立连接后从服务器读取到可用资源所用的时间
+  ConnectTimeout: 5000   #指建立连接所用的时间
+
+logging:
+  level:
+    com.gy.springcloud.service.PaymentService: debug
