@@ -1,0 +1,46 @@
+server:
+  port: 9527
+
+spring:
+  application:
+    name: cloud-zuul-gateway
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka
+  instance:
+    instance-id: Zuul9527
+    prefer-ip-address: true
+
+#zuul:
+#  routes: #路由映射配置
+#    payment:  #路由的ID，没有固定的规则，但要求唯一，建议与服务名相对应
+#      path: /payment/**  #匹配的映射路径
+#      serviceId: cloud-payment-service #指定该路由要访问的服务名，也可以直接使用服务的真实地址，不过那样就会失去负载均衡的功能
+#    order:
+#      path: /order/**
+#      serviceId: cloud-consumer-order80
+#  ignored-services:  #指定需要屏蔽服务，屏蔽之后将无法通过zuul默认的路径访问到，而是需要逐个指定。也可以直接使用*屏蔽所有服务的默认访问路径
+#  #ignored-services: "*"
+#  - cloud-payment-service
+#  - cloud-consumer-order80
+#  prefix: /api/v1 #用于指定zuul路由访问路径的前缀
+zuul:
+  routes:
+    cloud-payment-service: /payment/**
+    cloud-consumer-order80: /order/**
+  PreLogFilter:
+    pre:
+      disable: false
+
+
+# 开启查看路由的端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'routes'
+
+
+
