@@ -20,10 +20,10 @@ eureka:
     register-with-eureka: true # 是否将自己注册进Eureka server，默认为true
     fetch-registry: true # 是否从Eureka Server抓取已有的注册信息，默认为true，单节点无所谓，但集群必须设置为true才能配合ribbon使用负载均衡
     service-url:
-      defaultZone: http://eureka7001.com:7001/eureka, http://eureka7002.com:7002/eureka
+      defaultZone: http://eureka7001.com:7001/eureka #, http://eureka7002.com:7002/eureka
   instance:
     instance-id: payment8001  # 在eureka页面中显示的instance名称
     prefer-ip-address: true   # 在eureka页面中是否可以通过名称链接到对应的IP地址
-    lease-renewal-interval-in-seconds: 2
-    lease-expiration-duration-in-seconds: 5
+#    lease-renewal-interval-in-seconds: 2
+#    lease-expiration-duration-in-seconds: 5
 
