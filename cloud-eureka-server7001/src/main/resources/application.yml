@@ -3,10 +3,10 @@ server:
 
 spring:
   application:
-    name: eureka7001.com2
+    name: eureka7001.com
 eureka:
   instance:
-    hostname: eureka7001.com1
+    hostname: eureka7001.com
   client:
     register-with-eureka: false # false表示不向注册中心注册自己
     fetch-registry: false  # false表示自己就是注册中心，不需要去检索服务
