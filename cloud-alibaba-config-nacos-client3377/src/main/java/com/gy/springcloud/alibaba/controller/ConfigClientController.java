@@ -1,4 +1,4 @@
-package com.gy.springcloud.controller;
+package com.gy.springcloud.alibaba.controller;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RefreshScope
+@RefreshScope //支持Nacos的动态刷新
 public class ConfigClientController {
     @Value("${server.port}")
     private String serverPort;
@@ -16,6 +16,6 @@ public class ConfigClientController {
 
     @GetMapping("/configInfo")
     public String getConfigInfo() {
-        return "ServerPort: " + serverPort + "ConfigInfo: " + configInfo;
+        return "ConfigInfo: " + configInfo;
     }
 }
