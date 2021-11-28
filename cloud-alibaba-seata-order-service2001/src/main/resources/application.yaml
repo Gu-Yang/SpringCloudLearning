@@ -1,0 +1,57 @@
+server:
+  port: 2001
+
+spring:
+  application:
+    name: seata-order-service
+  cloud:
+    alibaba:
+      seata:
+        #自定义事务组名称需要与seata-server中的对应
+        service:
+          gyTxGroup: default
+    nacos:
+      discovery:
+        server-addr: 192.168.137.130:8848
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.137.130:3306/seata_order
+    username: root
+    password: 123456
+
+seata:
+  tx-service-group: gyTxGroup
+  registry:
+    type: nacos
+    nacos:
+      application: seata-server
+      server-addr: 192.168.137.130:8848
+      group: SEATA_GROUP
+      username: nacos
+      password: nacos
+      namespace: 2449b5c1-b2f7-4787-951e-beb63ee73ead
+  config:
+    type: nacos #若要使用file.conf进行配置，则可以将此处设置改为file，并在resource目录下增加file.conf
+    nacos:
+      application: seata-server
+      server-addr: 192.168.137.130:8848
+      group: SEATA_GROUP
+      username: nacos
+      password: nacos
+      namespace: 2449b5c1-b2f7-4787-951e-beb63ee73ead
+      data-id: seataServer.properties #此处可以指定与seata server一致的配置文件，也可以单独配置自己的配置文件
+  service:
+    vgroupMapping:
+      gyTxGroup: default
+
+feign:
+  hystrix:
+    enabled: false
+
+logging:
+  level:
+    io:
+    seata: info
+
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
